@@ -26,7 +26,7 @@ local Window = Rayfield:CreateWindow({
 })
 
 
-local Tab = Window:CreateTab("The good stuff", 10590477450)
+local Tab = Window:CreateTab("Main script", 10590477450)
 
 -- local Section = Tab:CreateSection("t")
 
@@ -166,8 +166,8 @@ UserInputService.InputBegan:Connect(function(input, Typing)
 	    for i=1, 1 do
             workspace.ServerStuff.dropAmmo:FireServer("rations", "MRE")
             workspace.ServerStuff.dropAmmo:FireServer("rations", "Bottle")
-            workspace.ServerStuff.dropAmmo:FireServer("rations", "Beans")
-              workspace.ServerStuff.dropAmmo:FireServer("rations", "Soda")
+            workspace.ServerStuff.dropAmmo:FireServer("rations", "Long Ammo")
+              workspace.ServerStuff.dropAmmo:FireServer("rations", "Small Ammo")
             wait(0.1)
         end
     end
@@ -279,19 +279,19 @@ local perk = require(workspace.ServerStuff.Statistics["CLASS_STATISTICS"])["shie
    perk.activename = "By Sasquatch_htv"
    perk.activedetails = "Deploy the Aegis barrier for your protection DO NOT DIE."
    perks.atkmod = 300 -- 2 taps any bosses
-   perks.healthmod = 150
-   perks.defmod = 199 -- Even tho your beefy explosion still hurt somehow
+   perks.healthmod = 135
+   perks.defmod = 350-- Even tho your beefy explosion still hurt somehow
    perks.stammod = 200
    perks.shovemod = 155
    perks.lightatkspeed = 100
     perks.heavyatkspeed = 200
-    perks.recoilmod = 155
-    perks.accmod = 1950
-     perks.reloadmod = 200
+    perks.recoilmod = 10
+    perks.accmod = 10
+     perks.reloadmod = 10
      perks.noaimmod = false
      perks.scavmod = 4000
      perks.harvestmod = 690
-     perks.mvtmod = 40
+     perks.mvtmod = 100
      explosive_resist = true
      perks.cripple_immune = true
      perks.exhaust_immune = true
@@ -306,7 +306,44 @@ local perk = require(workspace.ServerStuff.Statistics["CLASS_STATISTICS"])["shie
     end,
 })
 local Button = Tab:CreateButton({
-	Name = "Fagabond (make this balanced and ill buy you a cupcake)",
+	Name = "Mad Lad(berserker)",
+	Callback = function()
+        local perks = require(workspace.ServerStuff.Statistics["CLASS_STATISTICS"])["berz"].basestats
+local perk = require(workspace.ServerStuff.Statistics["CLASS_STATISTICS"])["berz"]
+    perk.name = "Mad Lad"
+    perk.desc = "HOW ARE YOU EVEN ALIVE!!?!??!?"
+    perk.pros = {"Apparently overdosing 347262657 C.Serum is good","You do stupid amout of power with melee."};
+    perk.cons = {"DO NOT USE GUNS AT ALL","Explosive hurt","Imagine shoving lmao"}
+   perk.activename = "By Sasquatch_htv"
+   perk.activedetails = "Why are you using more SERUM?!?!?! IS 347262657 not ENOUGH"
+   perks.atkmod = 450 -- 2 taps any bosses
+   perks.healthmod = 135
+   perks.defmod = 350-- Even tho your beefy explosion still hurt somehow
+   perks.stammod = 590
+   perks.shovemod = 10
+   perks.lightatkspeed = 140
+    perks.heavyatkspeed = 255
+    perks.recoilmod = 10
+    perks.accmod = 10
+     perks.reloadmod = 10
+     perks.noaimmod = false
+     perks.scavmod = 100
+     perks.harvestmod = 100
+     perks.mvtmod = 40
+     explosive_resist = true
+     perks.cripple_immune = true
+     perks.exhaust_immune = true
+     perks.frac_immune = true 
+     perks.nomorale = true
+     perks.explosivemod = 100
+     perks.bleed_immune = true
+    perks.backpack = true
+    perks.falldamagemod = true
+    perks.craftcostmod = 1000
+    end,
+})
+local Button = Tab:CreateButton({
+	Name = "Fagabond",
 	Callback = function()
         local perks = require(workspace.ServerStuff.Statistics["CLASS_STATISTICS"])["sword"].basestats
 local perk = require(workspace.ServerStuff.Statistics["CLASS_STATISTICS"])["sword"]
@@ -351,28 +388,28 @@ local perk = require(workspace.ServerStuff.Statistics["CLASS_STATISTICS"])["swor
             workspace.ServerStuff.deathPlay:FireServer()
             task.wait()
         end
-
+        
     end,
  })
  local Button = Tab:CreateButton({
     Name = "esp [M TO REFRESH]",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/bigblackmonkeyboi/scip/main/Decaying-Winter-Esp.lua", true))();
-
+        
     end,
  })
  local Button = Tab:CreateButton({
     Name = "teleport SledgeQueen",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/bigblackmonkeyboi/scip/main/Sledgequeentp.lua", true))();
-
+        
     end,
  })
  local Button = Tab:CreateButton({
     Name = "teleport ALL Scavengers",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/bigblackmonkeyboi/scip/main/tp-all-enemy-to-you-in-dw.lua", true))();
-
+        
     end,
  })
  local Button = Tab:CreateButton({
@@ -381,11 +418,11 @@ local perk = require(workspace.ServerStuff.Statistics["CLASS_STATISTICS"])["swor
         function Respawn()
             workspace.ServerStuff.spawnPlayer:FireServer("respawncharacter")
         end 
-
+        
         function Hub()
             workspace.ServerStuff.spawnPlayer:FireServer("hubbing")
         end    
-
+        
         function Start(arg)
             if arg == "Normal" then
                 game.Players.LocalPlayer:FindFirstChild("start").Value = "normal"
@@ -393,7 +430,7 @@ local perk = require(workspace.ServerStuff.Statistics["CLASS_STATISTICS"])["swor
                 game.Players.LocalPlayer:FindFirstChild("start").Value = "normal"
             end    
         end
-
+        
         function Spawn(Cords)
             Respawn()
             repeat task.wait() until not game.Players.LocalPlayer.Character:FindFirstChild("Outfit")
@@ -414,7 +451,7 @@ local perk = require(workspace.ServerStuff.Statistics["CLASS_STATISTICS"])["swor
                 game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(-118.72508239746094, -22.03114128112793, 1088.935546875)
             end
         end
-
+        
         Spawn("Respawn") --- Match (puts you in match with pvp), HubB (hub with pvp), HubA (hub without pvp), Respawn (puts you back into menu)
     end,
  })
@@ -426,7 +463,7 @@ local perk = require(workspace.ServerStuff.Statistics["CLASS_STATISTICS"])["swor
             workspace.ServerStuff.deathPlay:FireServer()
             task.wait()
         end
-
+        
     end,
  })
  local Button = Tab:CreateButton({
@@ -457,14 +494,14 @@ end)
  local Button = Tab:CreateButton({
     Name = "Music",
     Callback = function()
-
+        
         local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-
+        
         local Window = Library.CreateLib("Sounds", "Serpent")
-
-
+        
+        
         -- Tabs --
-
+        
         local Songs = Window:NewTab("Holdout")
         local Gamemode = Window:NewTab("Gamemode")
         local Theme = Window:NewTab("Theme")
@@ -476,15 +513,15 @@ end)
         local AGENT = Window:NewTab("AGENT")
         local Shadow = Window:NewTab("Reikgon")
         local Settings = Window:NewTab("Settings")
-
+        
         -- Local --
-
+        
         local Play = game:GetService("Workspace").ServerStuff.playAudio
-
+        
         -- Holdout --
-
+        
         local Holdpot = Songs:NewSection("Boss Themes")
-
+        
         Holdpot:NewButton("Medieval", "Knights Theme", function()
         Play:FireServer({"songs", "holdout_bosses"}, "medieval", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -494,7 +531,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Holdpot:NewButton("Zealot", "Zealot Theme", function()
         Play:FireServer({"songs", "holdout_bosses"}, "zealot", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -549,11 +586,11 @@ end)
         Duration = 4;
         })
         end)
-
+        
         -- Theme --
-
+        
         local Theme = Theme:NewSection("Theme")
-
+        
         Theme:NewButton("Scavfinal", "ScavFinal Theme", function()
         Play:FireServer({"songs"}, "scavfinal", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -563,7 +600,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Theme:NewButton("Scavwars", "Scavwars Theme", function()
         Play:FireServer({"songs"}, "scavwar", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -573,7 +610,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Theme:NewButton("Final", "This shit Dope", function()
         Play:FireServer({"songs"}, "final", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -583,7 +620,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Theme:NewButton("End Credits", "Ending Credits Theme", function()
         Play:FireServer({"songs"}, "unused2", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -593,7 +630,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Theme:NewButton("Unused", "Unused Theme", function()
         Play:FireServer({"songs"}, "unused1", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -603,11 +640,11 @@ end)
         Duration = 4;
         })
         end)
-
+        
         -- Gamemode --
-
+        
         local Mode = Gamemode:NewSection("Random Themes")
-
+        
         Mode:NewButton("Juggernaut", "Juggernaut", function()
         Play:FireServer({"gamemode"}, "juggernaut", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -617,7 +654,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Mode:NewButton("Bloodrush", "Bloodrush", function()
         Play:FireServer({"gamemode"}, "bloodrush", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -627,7 +664,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Mode:NewButton("GamemodeA", "GamemodeA", function()
         Play:FireServer({"gamemode"}, "gamemodeA", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -637,7 +674,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Mode:NewButton("GamemodeB", "GamemodeB", function()
         Play:FireServer({"gamemode"}, "gamemodeB", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -647,7 +684,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Mode:NewButton("GamemodeC", "GamemodeC", function()
         Play:FireServer({"gamemode"}, "gamemodeC", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -657,7 +694,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Mode:NewButton("Horn", "Horn", function()
         Play:FireServer({"gamemode"}, "horn", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -667,11 +704,11 @@ end)
         Duration = 4;
         })
         end)
-
+        
         -- Events --
-
+        
         local Event = Events:NewSection("Events Sounds")
-
+        
         Event:NewButton("KillSwitch", "KillSwitch", function()
         Play:FireServer({"events", "survevents"}, "killswitch", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -681,7 +718,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Event:NewButton("Flareraid", "Flareraid", function()
         Play:FireServer({"events", "survevents"}, "flareraid", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -691,7 +728,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Event:NewButton("Bloodrush", "Bloodrush", function()
         Play:FireServer({"events", "survevents"}, "bloodrush", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -701,7 +738,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Event:NewButton("Thunder", "Thunder", function()
         Play:FireServer({"events", "survevents"}, "thunder", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -711,7 +748,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Event:NewButton("Exotic", "Exotic", function()
         Play:FireServer({"events", "survevents"}, "exotic", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -721,7 +758,7 @@ end)
         Duration = 4;
         })
         end)
-
+        
         Event:NewButton("Monte", "Monte", function()
         Play:FireServer({"events", "survevents"}, "monte", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -731,11 +768,11 @@ end)
         Duration = 4;
         })
         end)
-
+        
         -- Traps --
-
+        
         local Tr = Traps:NewSection("Trigger Sounds")
-
+        
         Tr:NewButton("Flare", "Flare Trap", function()
         Play:FireServer({"world_item"}, "trap_flare1", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -745,7 +782,7 @@ end)
         Duration = 1;
         })
         end)
-
+        
         Tr:NewButton("Flare2", "Flare Trap2", function()
         Play:FireServer({"world_item"}, "trap_flare2", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -755,7 +792,7 @@ end)
         Duration = 1;
         })
         end)
-
+        
         Tr:NewButton("Dynamite", "Dynamite Trap", function()
         Play:FireServer({"world_item"}, "trap_fuse", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -765,7 +802,7 @@ end)
         Duration = 1;
         })
         end)
-
+        
         Tr:NewButton("Firebomb", "Firebomb", function()
         Play:FireServer({"world_item"}, "firebomb", workspace)
         game.StarterGui:SetCore("SendNotification", {
@@ -775,209 +812,209 @@ end)
         Duration = 1;
         })
         end)
-
+        
         -- Boss --
-
+        
         local Boss = Boss:NewSection("Voicelines")
-
+        
         Boss:NewDropdown("Taunt", "Taunt", {"taunt_1", "taunt_2", "taunt_3", "taunt_4", "taunt_5", "taunt_6", "taunt_7", "taunt_8", "taunt_9"}, function(Select)
         Play:FireServer({"ai", "boss"}, Select, workspace)
         end)
-
+        
         Boss:NewDropdown("Hurt", "Hurt", {"hurt_1", "hurt_2", "hurt_3", "hurt_4"}, function(Hurt)
         Play:FireServer({"ai", "boss"}, Hurt, workspace)
         end)
-
+        
         Boss:NewButton("Big Hurt", "Totally Moaning", function()
         Play:FireServer({"ai", "boss"}, "big_hurt", workspace)
         end)
-
+        
         Boss:NewButton("Intro", "Introduction", function()
         Play:FireServer({"ai", "boss"}, "intro_1", workspace)
         end)
-
+        
         Boss:NewButton("Intro2", "Introduction2", function()
         Play:FireServer({"ai", "boss"}, "intro_2", workspace)
         end)
-
+        
         Boss:NewButton("Gameover", "Gameover", function()
         Play:FireServer({"ai", "boss"}, "game_over1", workspace)
         end)
-
+        
         Boss:NewButton("Gameover2", "Gameover2", function()
         Play:FireServer({"ai", "boss"}, "game_over2", workspace)
         end)
-
+        
         Boss:NewButton("Behold", "Behold Power of An Angels", function()
         Play:FireServer({"ai", "boss"}, "behold", workspace)
         end)
-
+        
         Boss:NewButton("Enough", "Enough", function()
         Play:FireServer({"ai", "boss"}, "enough", workspace)
         end)
-
+        
         Boss:NewButton("Woes", "Woes", function()
         Play:FireServer({"ai", "boss"}, "woes", workspace)
         end)
-
+        
         -- Emperor --
-
+        
         local Emp = Emperor:NewSection("Voicelines")
-
+        
         Emp:NewDropdown("Begin", "Begin", {"begin1", "begin2", "begin3"}, function(begin)
         Play:FireServer({"events", "emperor"}, begin, workspace)
         end)
-
+        
         Emp:NewDropdown("Blocked", "Blocked", {"blocked1", "blocked2", "blocked3", "blocked4", "blocked5"}, function(blocked)
         Play:FireServer({"events", "emperor"}, blocked, workspace)
         end)
-
+        
         Emp:NewDropdown("Chatter", "Chatter", {"chatter1", "chatter2", "chatter3", "chatter4", "chatter5"}, function(chat)
         Play:FireServer({"events", "emperor"}, chat, workspace)
         end)
-
+        
         Emp:NewDropdown("Confirm", "Confirm", {"confirm1", "confirm2", "confirm3", "confirm4", "confirm5"}, function(confirm)
         Play:FireServer({"events", "emperor"}, confirm, workspace)
         end)
-
+        
         Emp:NewDropdown("Lowhealth", "Lowhealth", {"lowhealth1", "lowhealth2", "lowhealth3"}, function(low)
         Play:FireServer({"events", "emperor"}, low, workspace)
         end)
-
+        
         -- Ilija --
-
+        
         local Ilija = Ilija:NewSection("Voicelines")
-
+        
         Ilija:NewDropdown("Arrive", "Arrive", {"arrive1", "arrive2", "arrive3"}, function(Arrive)
         Play:FireServer({"voices", "ilija", "arrive"}, Arrive, workspace)
         end)
-
+        
         Ilija:NewDropdown("Quip", "Quip", {"quip1", "quip2", "quip3", "quip4", "quip5"}, function(Quip)
         Play:FireServer({"voices", "ilija", "quip"}, Quip, workspace)
         end)
-
+        
         Ilija:NewDropdown("End", "End", {"end1", "end2", "end3"}, function(End)
         Play:FireServer({"voices", "ilija", "end"}, End, workspace)
         end)
-
+        
         Ilija:NewDropdown("Reload", "Reload", {"reload1", "reload2", "reload3", "reload4", "reload5", "reload6", "reload7", "reload8", "reload9"}, function(Reload)
         Play:FireServer({"voices", "ilija", "reload"}, Reload, workspace)
         end)
-
+        
         Ilija:NewDropdown("Shot", "Shot", {"shot1", "shot2", "shot3", "shot4", "shot5", "shot6", "shot7", "shot8", "shot9", "shot10", "shot11"}, function(Shot)
         Play:FireServer({"voices", "ilija", "shot"}, Shot, workspace)
         end)
-
+        
         -- AGENT --
-
+        
         local Agen = AGENT:NewSection("AGENT Voicelines")
-
+        
         Agen:NewDropdown("Stormenter", "Stormenter", {"storm1", "storm2"}, function(storm)
         Play:FireServer({"AGENT", "stormenter"}, storm, workspace)
         end)
-
+        
         Agen:NewDropdown("Stormleave", "Stormleave", {"storm1", "storm2"}, function(storm2)
         Play:FireServer({"AGENT", "stormleave"}, storm2, workspace)
         end)
-
+        
         Agen:NewDropdown("hostile", "hostile", {"hostile1", "hostile2", "hostile3", "hostile4", "hostile5", "hostile6", "hostile7", "hostile8"}, function(hostile)
         Play:FireServer({"AGENT", "hostile"}, hostile, workspace)
         end)
-
+        
         Agen:NewDropdown("Heavy", "Heavy", {"heavy1", "heavy2"}, function(heavy)
         Play:FireServer({"AGENT", "heavy"}, heavy, workspace)
         end)
-
+        
         Agen:NewDropdown("Join", "Join", {"join1", "join2", "join3"}, function(join)
         Play:FireServer({"AGENT", "join"}, join, workspace)
         end)
-
+        
         Agen:NewDropdown("Left", "Left", {"left1", "left2", "left3"}, function(left)
         Play:FireServer({"AGENT", "left"}, left, workspace)
         end)
-
+        
         Agen:NewDropdown("Down", "Down", {"down1", "down2"}, function(down)
         Play:FireServer({"AGENT", "down"}, down, workspace)
         end)
-
+        
         Agen:NewDropdown("Hvt", "Hvt", {"hvt1", "hvt2", "hvt3"}, function(hvt)
         Play:FireServer({"AGENT", "hvt"}, hvt, workspace)
         end)
-
+        
         Agen:NewDropdown("Lowhealth", "Lowhealth", {"lowhealth1", "lowhealth2", "lowhealth3"}, function(low)
         Play:FireServer({"AGENT", "lowhealth"}, low, workspace)
         end)
-
+        
         Agen:NewDropdown("Echo Start", "Echo Start", {"start1", "start2"}, function(storm)
         Play:FireServer({"AGENT", "echo_start"}, storm, workspace)
         end)
-
+        
         -- Shadow --
-
+        
         local Shadow = Shadow:NewSection("Reikgon Voices")
-
+        
         Shadow:NewButton("Sickler Scream", "Alert", function()
         Play:FireServer({"shadow"}, "alert", workspace)
         end)
-
+        
         Shadow:NewButton("Chainbreak", "Chainbreak", function()
         Play:FireServer({"shadow"}, "chainbreak", workspace)
         end)
-
+        
         Shadow:NewButton("Sickler Theme", "Sickler Provoked Theme", function()
         Play:FireServer({"shadow"}, "sickler_song", workspace)
         end)
-
+        
         Shadow:NewButton("Sickler Crying", "Sickler Idle", function()
         Play:FireServer({"shadow"}, "sickler_idle", workspace)
         end)
-
+        
         Shadow:NewDropdown("Sickler", "Sickler Voice", {"sickler_noise1", "sickler_noise2", "sickler_noise3"}, function(sickler)
         Play:FireServer({"shadow"}, sickler, workspace)
         end)
-
+        
         Shadow:NewLabel("Skinner")
-
+        
         Shadow:NewDropdown("Skinner", "Skinner Voice", {"skinner_noise1", "skinner_noise2", "skinner_noise3", "skinner_noise4", "skinner_noise5"}, function(skinner)
         Play:FireServer({"shadow"}, skinner, workspace)
         end)
-
+        
         Shadow:NewLabel("Hanger")
-
+        
         Shadow:NewDropdown("Hanger Alert", "Hanger Alert", {"alert1", "alert2", "alert3"}, function(hanger)
         Play:FireServer({"shadow", "hang"}, hanger, workspace)
         end)
-
+        
         Shadow:NewButton("Influence", "influence", function()
         Play:FireServer({"shadow", "hang"}, "influence1", workspace)
         end)
-
+        
         Shadow:NewButton("Influence2", "influence2", function()
         Play:FireServer({"shadow", "hang"}, "influence2", workspace)
         end)
-
+        
         Shadow:NewButton("Cast", "Possessed Sound", function()
         Play:FireServer({"shadow", "hang"}, "cast", workspace)
         end)
-
+        
         Shadow:NewButton("Resist", "Out of Possessed", function()
         Play:FireServer({"shadow", "hang"}, "resist", workspace)
         end)
-
+        
         Shadow:NewLabel("Hidden")
-
+        
         Shadow:NewButton("Attack", "Hidden Attack Sound", function()
         Play:FireServer({"events", "hiddenB"}, "attack", workspace)
         end)
-
+        
         Shadow:NewDropdown("Voicelines", "Taunt", {"taunt1", "taunt2", "taunt3", "taunt4"}, function(hidden)
         Play:FireServer({"events", "hiddenB"}, hidden, workspace)
         end)
-
+        
         -- Settings --
-
+        
         local Set = Settings:NewSection("Settings")
-
+        
         Set:NewKeybind("UI", "UI Keybind", Enum.KeyCode.RightShift, function()
             Library:ToggleUI()
         end)
@@ -989,11 +1026,11 @@ end)
         repeat
             task.wait()
         until game.Players.LocalPlayer.PlayerGui.mainHUD.StaminaFrame:FindFirstChild("TextLabel") ~= nil
-
+        
         if game.Players.LocalPlayer.PlayerGui.mainHUD.StaminaFrame == nil then
             return
         end
-
+        
         function GrabMainScript()
             for _, instance in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                 if instance:IsA("LocalScript") and instance.Name ~= "ClickDetectorScript" then
@@ -1001,7 +1038,7 @@ end)
                 end
             end
         end
-
+        
         local func
         local script = GrabMainScript()
         for i, v in pairs(getreg()) do
@@ -1027,7 +1064,7 @@ end)
         )
     end,
  })
-
+ 
  local Tab = Window:CreateTab("Spawning", 10590477450)
 local Section = Tab:CreateSection("Guns")
  local Button = Tab:CreateButton({
@@ -1039,19 +1076,19 @@ local Section = Tab:CreateSection("Guns")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintUMP",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+     
     end,
  })
-
+ 
  local Button = Tab:CreateButton({
     Name = "spawn M60",
     Callback = function()
@@ -1061,19 +1098,19 @@ local Section = Tab:CreateSection("Guns")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintSubLMG",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+     
     end,
  })
-
+ 
  local Button = Tab:CreateButton({
     Name = "spawn REDEEMER",
     Callback = function()
@@ -1083,16 +1120,16 @@ local Section = Tab:CreateSection("Guns")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintMRVolver",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+     
     end,
  })
 
@@ -1105,16 +1142,16 @@ local Section = Tab:CreateSection("Guns")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintIntSniper",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+     
     end,
  })
 
@@ -1127,16 +1164,16 @@ local Section = Tab:CreateSection("Guns")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintFNLMG",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+     
     end,
  })
 
@@ -1149,16 +1186,16 @@ local Section = Tab:CreateSection("Guns")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintSUPAK",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+     
     end,
  })
 
@@ -1173,16 +1210,16 @@ local Section = Tab:CreateSection("Guns")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintAdrStim",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+     
     end,
  })
 
@@ -1195,16 +1232,16 @@ local Section = Tab:CreateSection("Guns")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintSStim",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+     
     end,
  })
 
@@ -1217,16 +1254,16 @@ local Section = Tab:CreateSection("Guns")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintSPDStim",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+     
     end,
  })
 
@@ -1239,16 +1276,16 @@ local Section = Tab:CreateSection("Guns")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintDEFStim",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+     
     end,
  })
 
@@ -1263,16 +1300,16 @@ local Section = Tab:CreateSection("Melees")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintRBHammer",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+     
     end,
  })
 
@@ -1285,52 +1322,15 @@ local Section = Tab:CreateSection("Melees")
             [1] = workspace.Interactables.Workbench,
             [2] = "workbenchblueprintNailedB",
         }
-
+        
         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
         wait(1.7)
         local args = {
             [1] = workspace.Interactables.Workbench,
             [2] = "workbench",
         }
-
-        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
+        
+         game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
+     
     end,
  })
-
-  local Button = Tab:CreateButton({
-    Name = "spawn Exe sword",
-    Callback = function()
-        local workbench = workspace.Interactables:FindFirstChild("Workbench")
-        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-        local args = {
-            [1] = workspace.Interactables.Workbench,
-            [2] = "workbenchblueprintExecSword",
-        }
-
-        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        wait(1.7)
-        local args = {
-            [1] = workspace.Interactables.Workbench,
-            [2] = "workbench",
-        }
-
-        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-
-    end,
- })
-
-  local Button = Tab:CreateButton({
-    Name = "spawn Fire axe",
-    Callback = function()
-        local workbench = workspace.Interactables:FindFirstChild("Workbench")
-        game.Players.LocalPlayer.Character:PivotTo(workbench:GetPivot() + Vector3.new(0, 5, 0))
-        local args = {
-            [1] = workspace.Interactables.Workbench,
-            [2] = "workbenchblueprintFAxe",
-        }
-
-        game:GetService("ReplicatedStorage").Interactables.interaction:FireServer(unpack(args))
-        wait(1.7)
-        local args = {
-            [1] = workspace.I... (6 KB left)
